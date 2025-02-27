@@ -1,7 +1,7 @@
 
 ### Extract data with ingest tool by running this:
 ```bash
-$ python3 -m dcpy.cli lifecycle ingest dpr_forever_wild -s
+python3 -m dcpy.cli lifecycle ingest dpr_forever_wild -s
 ```
 
 ### Output files
