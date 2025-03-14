@@ -261,11 +261,45 @@ file_format:
   geometry: <geometry details>  # Only required if dataset is geospatial (see section below). Otherwise can be ommitted 
 ```
 
+Examples:
+
+```yaml
+# Non-geospatial dataset of Brooklyn Libraries: https://www.bklynlibrary.org/locations
+file_format:
+  type: json
+  json_read_fn: normalize
+  json_read_kwargs: { "record_path": [ "locations" ] }
+```
+
+```yaml
+# Geospatial dataset with geometry stored in "Longitude" and "Latitude" columns
+file_format:
+  type: json
+  json_read_fn: normalize
+  json_read_kwargs:
+    {
+      "record_path": ["Locations", "Location"],
+      "meta": ["TrackerID", "FMSID", "Title", "TotalFunding"],
+    }
+  geometry:
+    crs: EPSG:4326
+    geom_column:
+      x: Longitude
+      y: Latitude
+```
+
 </details>
 
 <details>
 <summary><strong>In GeoJson</strong></summary>
 Note, crs is not an attribute for geojson format. Geojson has a specification of "EPSG:4326"
+
+```yaml
+file_format:
+  type: geojson
+```
+
+Example:
 
 ```yaml
 file_format:
@@ -283,6 +317,14 @@ file_format:
   crs: <crs>  # Coordinate Reference System. Ex: `EPSG:4326`
 ```
 
+Example:
+
+```yaml
+file_format:
+  type: shapefile
+  crs: EPSG:2263
+```
+
 </details>
 
 <details>
@@ -294,6 +336,24 @@ file_format:
   crs: <crs>  # Coordinate Reference System. Ex: `EPSG:4326`
   layer: <layer name>  # Only required if the file contains multiple layers. Otherwise can be ommitted 
 ```
+
+Examples:
+
+```yaml
+# Geodatabase file with one layer
+file_format:
+  type: geodatabase
+  crs: EPSG:2263
+```
+
+```yaml
+# Geodatabase file with multiple layers. Pick `lion` layer
+file_format:
+  type: geodatabase
+  layer: lion
+  crs: EPSG:2263
+```
+
 
 </details>
 
