@@ -4,7 +4,7 @@ This tool ingests data from external sources or a local machine, optionally tran
 
 ### Extract data with ingest tool by running this:
 ```bash
-python3 -m dcpy.cli lifecycle ingest dpr_forever_wild -s
+python3 -m dcpy.cli lifecycle ingest dpr_forever_wild --template-dir ./templates
 ```
 
 ### Ingest tool in action
@@ -51,14 +51,15 @@ Each dataset requires a YAML configuration file defining its ingestion settings.
 
 ### **Shared Required Fields**
 ```yaml
+# <unique_dataset_id>.yml
+
 id: <unique_dataset_id>  # Unique identifier for the dataset. It must match with its config filename like <unique_dataset_id>.yml
-acl: public-read  # Access control level (`public-read` or `private`)
 
 attributes:
   name: <dataset name>  # Human-readable name of the dataset
 
 ingestion:
-  source: <source details>  # Specifies the data source, see next section 
+  source: <source details>  # Specifies the data source, see section below
   file_format: <format details>  # Defines the file format of the source data, seen section below
 ```
 
@@ -136,10 +137,10 @@ Example:
 ```yaml
 #  National Register of Historic Places: https://services.arcgis.com/1xFZPtKn1wKC6POA/ArcGIS/rest/services/National_Register_Building_Listings/FeatureServer
 source:
-	type: esri
-	server: nys_parks
-	dataset: National_Register_Building_Listings
-	layer_id: 13
+  type: esri
+  server: nys_parks
+  dataset: National_Register_Building_Listings
+  layer_id: 13
 ```
 
 </details>
@@ -161,9 +162,9 @@ Example:
 ```yaml
 # NY Public Libraries: https://www.nypl.org/locations
 source:
-	type: api
-	endpoint: https://refinery.nypl.org/api/nypl/locations/v1.0/locations
-	format: json
+  type: api
+  endpoint: https://refinery.nypl.org/api/nypl/locations/v1.0/locations
+  format: json
 ```
 
 </details>
@@ -192,30 +193,30 @@ file_format:
 # Non-geospatial dataset with some optional attributes
 file_format:
   type: csv
-	encoding: utf-8
-	delimiter: "|"
-	column_names: ["Column 1", "Column 2"]	 # When data doesn't have headers, add new ones 
+    encoding: utf-8
+    delimiter: "|"
+    column_names: ["Column 1", "Column 2"]	 # When data doesn't have headers, add new ones 
 ```
 
 ```yaml
 # Geospatial dataset with geometry stored in "Longitude" and "Latitude" columns
 file_format:
   type: csv
-	geometry:
-		geom_column:
-			x: Longitude
-			y: Latitude
-		crs: EPSG:4326
+  geometry:
+    geom_column:
+      x: Longitude
+      y: Latitude
+    crs: EPSG:4326
 ```
 
 ```yaml
 # Geospatial dataset with geometry in "GEOM" column
 file_format:
   type: csv
-	geometry:
-		geom_column: GEOM
-		crs: EPSG:2263
-		format: wkb
+  geometry:
+    geom_column: GEOM
+    crs: EPSG:2263
+    format: wkb
 ```
 
 </details>
@@ -235,18 +236,18 @@ Examples:
 ```yaml
 # Non-geospatial dataset
 file_format:
-	type: xlsx
-	sheet_name: Sheet_1
+  type: xlsx
+  sheet_name: Sheet_1
 ```
 
 ```yaml
 # Geospatial dataset with geometry in "wkb_geometry" column
 file_format:
-	type: xlsx
-	sheet_name: Sheet_1
-	geometry:
-		geom_column: wkb_geometry
-		crs: EPSG:2263
+  type: xlsx
+  sheet_name: Sheet_1
+  geometry:
+    geom_column: wkb_geometry
+    crs: EPSG:2263
 ```
 
 </details>
