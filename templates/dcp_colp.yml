@@ -1,0 +1,14 @@
+# templates/dcp_colp.yml
+id: dcp_colp
+
+attributes:
+  name: City Owned and Leased Property (COLP)
+
+ingestion:
+  source:
+    type: socrata
+    org: nyc
+    uid: fn4k-qyk2
+    format: geojson
+  file_format:
+    type: geojson
