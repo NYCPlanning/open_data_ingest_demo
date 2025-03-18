@@ -363,7 +363,7 @@ file_format:
 Once your YAML file is ready, run the following command:
 
 ```bash
-python3 -m dcpy.cli lifecycle ingest <unique_dataset_id> --template-dir <directory path> -s
+python3 -m dcpy.cli lifecycle ingest <unique_dataset_id> --template-dir <directory path>
 ```
 
 ### 3. Output
