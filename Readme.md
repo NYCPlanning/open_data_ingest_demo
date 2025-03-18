@@ -4,7 +4,7 @@ This tool ingests data from external sources or a local machine, optionally tran
 
 ### Extract data with ingest tool by running this:
 ```bash
-python3 -m dcpy.cli lifecycle ingest dpr_forever_wild --template-dir ./templates
+python3 -m dcpy.cli lifecycle ingest nysparks_historicplaces --template-dir ./templates
 ```
 
 ### Ingest tool in action
