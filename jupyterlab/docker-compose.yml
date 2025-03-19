@@ -1,0 +1,11 @@
+services:
+  jupyter:
+    container_name: dcp_ingest_demo
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/home/jovyan/work
+    ports:
+      - "8888:8888"
+
