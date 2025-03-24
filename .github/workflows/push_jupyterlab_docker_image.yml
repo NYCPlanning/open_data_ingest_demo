@@ -1,7 +1,7 @@
 name: JupyterLab Docker Image - Build and Publish
 on:
   push:
-    branches: [ main ]
+  #  branches: [ main ]
   workflow_dispatch:
 
 jobs:
