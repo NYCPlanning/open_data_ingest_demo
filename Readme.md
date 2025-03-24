@@ -1,6 +1,7 @@
 # Overview
 This tool ingests data from external sources or a local machine, optionally transforms/cleans the data, and stores the result in Parquet files. It supports both geospatial and non-geospatial datasets.
 
+For a one-liner to launch JupyterLab with an environment ready to code, run `docker run --rm -p 8888:8888 nycplanning/open_data_ingest`
 
 ### Extract data with ingest tool by running this:
 ```bash
@@ -35,15 +36,21 @@ flowchart LR
 - `<dataset_id>.<format extension>`: raw data. Example: `dpr_forever_wild.zip`.
 - `<dataset_id>.parquet`: output data. Example: `dpr_forever_wild.parquet`. If pre-processing steps were not specified in dataset template, then this file will be the same as `init.parquet`
 
+# Environment Setup
 
-# Quick Start Guide
+## Docker
+If you have docker installed, you can simply run `docker run --rm -p 8888:8888 nycplanning/open_data_ingest`. This will run a JupyterLab instance, and prompt you with a url after it's built.
 
-## Installation
-Ensure you have Python and git installed, then install the ingest package:
+## More Manual
+There's also a requirements.txt file here - it's pretty minimal. You will need both pip and git installed, since we haven't officially published `dcpy` yet, so the requirements file points to our repo.
 
-```bash
-python -m pip install git+https://github.com/NYCPlanning/data-engineering@main
+However you choose to manage your python environment (venv, pyenv), simply install requirements.txt and you should be good to go. If you use VSCode like we do, you can run snippets in notebooks right in your editor, or you can try out the cli targets, such as
+
 ```
+python3 -m dcpy.cli lifecycle ingest fdny_firehouses
+```
+
+# `dcpy` Quick Start Guide
 
 ## Steps to Ingest Data
 ### 1. Create a YAML Ingest Config File
