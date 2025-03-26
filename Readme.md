@@ -1,5 +1,5 @@
 # Overview
-This tool ingests data from external sources or a local machine, optionally transforms/cleans the data, and stores the result in Parquet files. It supports both geospatial and non-geospatial datasets.
+This tool ingests data from external sources or a local machine, optionally transforms/cleans the data, and stores the result in Parquet files. It supports both geospatial and non-geospatial datasets. [Here](https://docs.google.com/presentation/d/1-sS4y0AuAw6-7jbvCHwtL28ybe0K9G84GkTfVFFG5ak/edit?usp=sharing) is a link to the Open Data Week presentation. 
 
 For a one-liner to launch JupyterLab with an environment ready to code, run `docker run --rm -p 8888:8888 nycplanning/open_data_ingest`
 
