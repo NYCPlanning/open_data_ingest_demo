@@ -12,3 +12,9 @@ ingestion:
     format: geojson
   file_format:
     type: geojson
+
+  processing_steps:
+  - name: filter_columns
+    args:
+      columns: [ "bbl", "agency", "parcel_name" ]
+  - name: deduplicate
