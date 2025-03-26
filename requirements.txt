@@ -1,3 +1,4 @@
-dcpy @ git+https://github.com/NYCPlanning/data-engineering@89a05c6
+dcpy @ git+https://github.com/NYCPlanning/data-engineering@7c885bc
 contextily
 sodapy
+ipykernel
