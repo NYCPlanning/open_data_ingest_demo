@@ -266,7 +266,7 @@ pygments==2.19.1
     #   ipython
     #   ipython-pygments-lexers
     #   rich
-pynacl==1.5.0
+pynacl==1.6.2
     # via paramiko
 pyogrio==0.10.0
     # via geopandas
