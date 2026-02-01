@@ -101,7 +101,7 @@ geographiclib==2.0
     # via geopy
 geojson==3.2.0
     # via leafmap
-geopandas==1.0.1
+geopandas==1.1.2
     # via dcpy
 geopy==2.4.1
     # via contextily
